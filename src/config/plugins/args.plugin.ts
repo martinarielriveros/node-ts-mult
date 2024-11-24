@@ -29,4 +29,9 @@ export const args = yargs(hideBin(process.argv))
     default: "customOutput",
     description: "This is the File destnation",
   })
+  .check((argv: any, options: any) => {
+    console.log(argv);
+    if (argv.b < 1) throw new Error("Value must be greater than zero");
+    return true;
+  })
   .parse();
